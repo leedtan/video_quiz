@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="/form.js"></script>
+
+</head>
+  <body>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+
+
+    <div id="player"></div>
+    <div id="container">
+    </div>
+
+
+
+  </body>
+
+
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 't0KwtuYyy3A',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange,
+            //'onTime': onTimeStateChange
+
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      var container = document.getElementById('container');
+      var myvideo = document.getElementsByTagName('iframe');
+
+      var quizArray = [];
+      var quiz1 = [[][10]]
+
+
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+
+          alert(player.getCurrentTime());
+        }
+      }
+
+      function onTimeStateChange(event){
+          ///alert(player.getCurrentTime());
+
+        if (event.position > 10){
+          //alert("10 seconds have passed");
+        }
+
+
+
+      }
+
+
+      function stopVideo1() {
+        player.stopVideo();
+        container.innerHTML = ""
+        quiz1 = false;
+        quiz2 = true;
+        done = false;
+      }
+
+
+
+
+
+
+    </script>
+
+
+
+</html>

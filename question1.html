@@ -1,0 +1,44 @@
+<script>
+
+  function doggy1() {
+    var errMsg = "<span style='font-weight: bold; color: red; font_size: 16pt;'>Nope that's not correct! Try Again! </span>";
+    var yes = "<span style='font-weight: bold; color: red; font_size: 16pt;'>Great JOB!!!! Play the Video! </span>";
+    if (document.getElementById('g1').checked) {
+        rate_value = document.getElementById('r1').value;
+        document.getElementById("oops").innerHTML = errMsg;
+    }
+    if (document.getElementById('g2').checked) {
+        document.getElementById("oops").innerHTML = errMsg;
+    }
+    if (document.getElementById('g3').checked) {
+        document.getElementById("good").innerHTML = yes;
+    }
+}
+</script>
+<img src='images/doggy.jpeg' />
+<form style=background-color:'white' name="first_question" id="first_question">
+  <table>
+    <tr>
+      <td><div id="oops"></div></td>
+    </tr>
+    <tr>
+      <td>Why can't the doggy get into the house?</td>
+    </tr>
+    <tr>
+      <td>He's acting silly </td>
+      <td><input type="radio" name="group1" id="g1" value="silly"><br></td>
+    </tr>
+    <td>He doesn't know any better</td>
+      <td><input type="radio" name="group1" id="g2" value="smart"><br></td>
+    </tr>
+    <td>He wants to make people laugh</td>
+      <td><input type="radio" name="group1" id="g3" value="laugh"><br></td>
+    </tr>
+    <tr>
+      <td>
+      <div id="good"></div>
+      <button type="button" onclick="doggy1()">Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
